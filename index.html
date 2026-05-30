@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Basar Saree Collection</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+--primary:#6d1020;
+--gold:#d4af37;
+--light:#faf7f2;
+--white:#fff;
+--dark:#222;
+}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:Poppins,sans-serif;
+background:var(--light);
+color:var(--dark);
+overflow-x:hidden;
+}
+
+.container{
+width:90%;
+max-width:1200px;
+margin:auto;
+}
+
+header{
+background:#fff;
+position:sticky;
+top:0;
+z-index:1000;
+box-shadow:0 2px 10px rgba(0,0,0,.08);
+}
+
+.navbar{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px 0;
+}
+
+.logo{
+font-size:28px;
+font-weight:700;
+color:var(--primary);
+}
+
+.nav-links{
+display:flex;
+gap:25px;
+}
+
+.nav-links a{
+text-decoration:none;
+color:#333;
+font-weight:500;
+}
+
+.nav-links a:hover{
+color:var(--primary);
+}
+
+.lang-btn{
+background:var(--primary);
+color:white;
+border:none;
+padding:10px 18px;
+border-radius:30px;
+cursor:pointer;
+font-weight:600;
+}
+
+.hero{
+height:80vh;
+background:
+linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.5)),
+url('https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=1600&q=80');
+background-size:cover;
+background-position:center;
+display:flex;
+align-items:center;
+}
+
+.hero-content{
+color:white;
+max-width:700px;
+}
+
+.hero h1{
+font-size:3rem;
+margin-bottom:20px;
+}
+
+.hero p{
+font-size:1.1rem;
+margin-bottom:25px;
+}
+
+.btn{
+display:inline-block;
+background:var(--gold);
+color:black;
+padding:14px 28px;
+text-decoration:none;
+border-radius:30px;
+font-weight:600;
+}
+
+.section-title{
+text-align:center;
+font-size:2rem;
+margin:70px 0 40px;
+color:var(--primary);
+}
+
+.categories{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+}
+
+.card{
+background:white;
+border-radius:15px;
+overflow:hidden;
+box-shadow:0 4px 15px rgba(0,0,0,.08);
+}
+
+.card img{
+width:100%;
+height:250px;
+object-fit:cover;
+}
+
+.card h3{
+padding:18px;
+text-align:center;
+}
+
+.b2b{
+margin:80px 0;
+background:var(--primary);
+color:white;
+padding:50px;
+text-align:center;
+border-radius:20px;
+}
+
+.b2b h2{
+margin-bottom:15px;
+}
+
+.whatsapp{
+display:inline-block;
+margin-top:20px;
+background:#25D366;
+color:white;
+padding:14px 28px;
+text-decoration:none;
+border-radius:30px;
+font-weight:600;
+}
+
+.products{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+}
+
+.product{
+background:white;
+border-radius:15px;
+overflow:hidden;
+box-shadow:0 4px 15px rgba(0,0,0,.08);
+}
+
+.product img{
+width:100%;
+height:320px;
+object-fit:cover;
+}
+
+.product-info{
+padding:20px;
+}
+
+.price{
+font-size:22px;
+font-weight:700;
+color:var(--primary);
+margin:10px 0;
+}
+
+.buttons{
+display:flex;
+gap:10px;
+flex-wrap:wrap;
+}
+
+.cart-btn{
+flex:1;
+padding:10px;
+background:var(--primary);
+color:white;
+border:none;
+border-radius:8px;
+cursor:pointer;
+}
+
+.order-btn{
+flex:1;
+padding:10px;
+background:#25D366;
+color:white;
+text-decoration:none;
+border-radius:8px;
+text-align:center;
+}
+
+footer{
+margin-top:80px;
+background:#111;
+color:white;
+padding:50px 20px;
+text-align:center;
+}
+
+.mobile-menu{
+display:none;
+font-size:28px;
+cursor:pointer;
+}
+
+@media(max-width:768px){
+
+.nav-links{
+display:none;
+position:absolute;
+top:70px;
+left:0;
+width:100%;
+background:white;
+flex-direction:column;
+padding:20px;
+}
+
+.nav-links.show{
+display:flex;
+}
+
+.mobile-menu{
+display:block;
+}
+
+.hero{
+height:70vh;
+}
+
+.hero h1{
+font-size:2rem;
+}
+
+.hero p{
+font-size:1rem;
+}
+
+.b2b{
+padding:30px 20px;
+}
+}
+
+</style>
+</head>
+<body>
+
+<header>
+<div class="container navbar">
+
+<div class="logo">Basar Saree</div>
+
+<div class="mobile-menu" onclick="toggleMenu()">☰</div>
+
+<nav class="nav-links" id="menu">
+<a href="#" data-key="home">Home</a>
+<a href="#" data-key="shop">Shop</a>
+<a href="#" data-key="traditional">Traditional</a>
+<a href="#" data-key="casual">Casual</a>
+<a href="#" data-key="about">About</a>
+<a href="#" data-key="contact">Contact</a>
+</nav>
+
+<button class="lang-btn" onclick="toggleLanguage()">
+BN | EN
+</button>
+
+</div>
+</header>
+
+<section class="hero">
+<div class="container">
+<div class="hero-content">
+<h1 data-key="hero">
+Elevate Your Elegance with Authentic Handcrafted Sarees
+</h1>
+
+<p data-key="subtitle">
+Premium collections crafted with tradition and love.
+</p>
+
+<a href="#" class="btn" data-key="shopbtn">
+Shop Now
+</a>
+</div>
+</div>
+</section>
+
+<section class="container">
+
+<h2 class="section-title" data-key="categories">
+Featured Categories
+</h2>
+
+<div class="categories">
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1594736797933-d0501ba2fe65?auto=format&fit=crop&w=800&q=80">
+<h3 data-key="silk">Silk Sarees</h3>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=800&q=80">
+<h3 data-key="cotton">Cotton Sarees</h3>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1583391733981-849840f62f45?auto=format&fit=crop&w=800&q=80">
+<h3 data-key="festival">Festival Collection</h3>
+</div>
+
+</div>
+
+</section>
+
+<section class="container">
+<div class="b2b">
+
+<h2 data-key="b2btitle">
+Wholesale / B2B Inquiry
+</h2>
+
+<p data-key="b2btext">
+Supplying premium sarees to boutiques and resellers in Nepal, Bangladesh and UAE.
+</p>
+
+<a href="https://wa.me/919999999999" class="whatsapp">
+WhatsApp Business
+</a>
+
+</div>
+</section>
+
+<section class="container">
+
+<h2 class="section-title" data-key="products">
+Popular Products
+</h2>
+
+<div class="products">
+
+<div class="product">
+<img src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=800&q=80">
+<div class="product-info">
+<h3>Premium Silk Saree</h3>
+<div class="price">₹2,499</div>
+
+<div class="buttons">
+<button class="cart-btn" data-key="cart">
+Add to Cart
+</button>
+
+<a href="https://wa.me/919999999999" class="order-btn">
+WhatsApp
+</a>
+</div>
+</div>
+</div>
+
+</div>
+
+</section>
+
+<footer>
+<p>© 2025 Basar Saree Collection. All Rights Reserved.</p>
+</footer>
+
+<script>
+
+function toggleMenu(){
+document.getElementById('menu').classList.toggle('show');
+}
+
+let lang='en';
+
+const translations={
+bn:{
+home:'হোম',
+shop:'দোকান',
+traditional:'ঐতিহ্যবাহী',
+casual:'ক্যাজুয়াল',
+about:'আমাদের সম্পর্কে',
+contact:'যোগাযোগ',
+hero:'খাঁটি ও ঐতিহ্যবাহী শাড়ির সেরা সম্ভার',
+subtitle:'ভালোবাসা ও ঐতিহ্যের ছোঁয়ায় তৈরি প্রিমিয়াম শাড়ি।',
+shopbtn:'এখনই কিনুন',
+categories:'জনপ্রিয় বিভাগ',
+silk:'সিল্ক শাড়ি',
+cotton:'কটন শাড়ি',
+festival:'উৎসব কালেকশন',
+b2btitle:'হোলসেল / B2B অনুসন্ধান',
+b2btext:'নেপাল, বাংলাদেশ ও UAE-এর বুটিক মালিকদের জন্য বিশেষ সরবরাহ।',
+products:'জনপ্রিয় পণ্য',
+cart:'কার্টে যোগ করুন'
+},
+en:{
+home:'Home',
+shop:'Shop',
+traditional:'Traditional',
+casual:'Casual',
+about:'About',
+contact:'Contact',
+hero:'Elevate Your Elegance with Authentic Handcrafted Sarees',
+subtitle:'Premium collections crafted with tradition and love.',
+shopbtn:'Shop Now',
+categories:'Featured Categories',
+silk:'Silk Sarees',
+cotton:'Cotton Sarees',
+festival:'Festival Collection',
+b2btitle:'Wholesale / B2B Inquiry',
+b2btext:'Supplying premium sarees to boutiques and resellers in Nepal, Bangladesh and UAE.',
+products:'Popular Products',
+cart:'Add to Cart'
+}
+};
+
+function toggleLanguage(){
+
+lang = lang==='en' ? 'bn' : 'en';
+
+document.querySelectorAll('[data-key]').forEach(el=>{
+const key = el.getAttribute('data-key');
+el.innerText = translations[lang][key];
+});
+
+if(lang==='bn'){
+document.body.style.fontFamily='Hind Siliguri, sans-serif';
+}else{
+document.body.style.fontFamily='Poppins, sans-serif';
+}
+}
+
+</script>
+
+</body>
+</html>
